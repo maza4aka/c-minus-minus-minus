@@ -1,0 +1,1420 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statements
+Rule 2     statements -> statements empty_statement
+Rule 3     statements -> statements declaration_statement
+Rule 4     statements -> statements assignment_statement
+Rule 5     statements -> empty_statement
+Rule 6     statements -> declaration_statement
+Rule 7     statements -> assignment_statement
+Rule 8     statements -> statements error ;
+Rule 9     statements -> error ;
+Rule 10    assignment_statement -> variable_usage = arithmetic_expression ;
+Rule 11    assignment_statement -> array_usage = arithmetic_expression ;
+Rule 12    assignment_statement -> error = arithmetic_expression ;
+Rule 13    assignment_statement -> variable_usage = error ;
+Rule 14    assignment_statement -> array_usage = error ;
+Rule 15    assignment_statement -> error = error ;
+Rule 16    arithmetic_expression -> ( arithmetic_expression )
+Rule 17    arithmetic_expression -> - arithmetic_expression
+Rule 18    arithmetic_expression -> + arithmetic_expression
+Rule 19    arithmetic_expression -> arithmetic_expression + arithmetic_expression
+Rule 20    arithmetic_expression -> arithmetic_expression - arithmetic_expression
+Rule 21    arithmetic_expression -> arithmetic_expression * arithmetic_expression
+Rule 22    arithmetic_expression -> arithmetic_expression / arithmetic_expression
+Rule 23    arithmetic_expression -> numeric_constant
+Rule 24    arithmetic_expression -> function_call
+Rule 25    arithmetic_expression -> variable_usage
+Rule 26    arithmetic_expression -> array_usage
+Rule 27    function_call -> function_name ( arithmetic_expression )
+Rule 28    function_name -> IDENTIFIER_TOKEN
+Rule 29    variable_usage -> IDENTIFIER_TOKEN
+Rule 30    array_usage -> IDENTIFIER_TOKEN [ arithmetic_expression ]
+Rule 31    numeric_constant -> INTEGRAL_CONSTANT
+Rule 32    numeric_constant -> DECIMAL_CONSTANT
+Rule 33    declaration_statement -> declaration_type declaration_list ;
+Rule 34    declaration_statement -> declaration_type error ;
+Rule 35    declaration_type -> FLOAT_TYPE
+Rule 36    declaration_type -> DOUBLE_TYPE
+Rule 37    declaration_type -> SHORT_TYPE
+Rule 38    declaration_type -> INT_TYPE
+Rule 39    declaration_list -> declaration_list , IDENTIFIER_TOKEN
+Rule 40    declaration_list -> declaration_list , IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ]
+Rule 41    declaration_list -> IDENTIFIER_TOKEN
+Rule 42    declaration_list -> IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ]
+Rule 43    empty_statement -> epsilon ;
+Rule 44    epsilon -> <empty>
+
+Terminals, with rules where they appear
+
+(                    : 16 27
+)                    : 16 27
+*                    : 21
++                    : 18 19
+,                    : 39 40
+-                    : 17 20
+/                    : 22
+;                    : 8 9 10 11 12 13 14 15 33 34 43
+=                    : 10 11 12 13 14 15
+DECIMAL_CONSTANT     : 32
+DOUBLE_TYPE          : 36
+FLOAT_TYPE           : 35
+IDENTIFIER_TOKEN     : 28 29 30 39 40 41 42
+INTEGRAL_CONSTANT    : 31 40 42
+INT_TYPE             : 38
+SHORT_TYPE           : 37
+[                    : 30 40 42
+]                    : 30 40 42
+error                : 8 9 12 13 14 15 15 34
+
+Nonterminals, with rules where they appear
+
+arithmetic_expression : 10 11 12 16 17 18 19 19 20 20 21 21 22 22 27 30
+array_usage          : 11 14 26
+assignment_statement : 4 7
+declaration_list     : 33 39 40
+declaration_statement : 3 6
+declaration_type     : 33 34
+empty_statement      : 2 5
+epsilon              : 43
+function_call        : 24
+function_name        : 27
+numeric_constant     : 23
+program              : 0
+statements           : 1 2 3 4 8
+variable_usage       : 10 13 25
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statements
+    (2) statements -> . statements empty_statement
+    (3) statements -> . statements declaration_statement
+    (4) statements -> . statements assignment_statement
+    (5) statements -> . empty_statement
+    (6) statements -> . declaration_statement
+    (7) statements -> . assignment_statement
+    (8) statements -> . statements error ;
+    (9) statements -> . error ;
+    (43) empty_statement -> . epsilon ;
+    (33) declaration_statement -> . declaration_type declaration_list ;
+    (34) declaration_statement -> . declaration_type error ;
+    (10) assignment_statement -> . variable_usage = arithmetic_expression ;
+    (11) assignment_statement -> . array_usage = arithmetic_expression ;
+    (12) assignment_statement -> . error = arithmetic_expression ;
+    (13) assignment_statement -> . variable_usage = error ;
+    (14) assignment_statement -> . array_usage = error ;
+    (15) assignment_statement -> . error = error ;
+    (44) epsilon -> .
+    (35) declaration_type -> . FLOAT_TYPE
+    (36) declaration_type -> . DOUBLE_TYPE
+    (37) declaration_type -> . SHORT_TYPE
+    (38) declaration_type -> . INT_TYPE
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+
+    error           shift and go to state 6
+    ;               reduce using rule 44 (epsilon -> .)
+    FLOAT_TYPE      shift and go to state 11
+    DOUBLE_TYPE     shift and go to state 12
+    SHORT_TYPE      shift and go to state 13
+    INT_TYPE        shift and go to state 14
+    IDENTIFIER_TOKEN shift and go to state 15
+
+    program                        shift and go to state 1
+    statements                     shift and go to state 2
+    empty_statement                shift and go to state 3
+    declaration_statement          shift and go to state 4
+    assignment_statement           shift and go to state 5
+    epsilon                        shift and go to state 7
+    declaration_type               shift and go to state 8
+    variable_usage                 shift and go to state 9
+    array_usage                    shift and go to state 10
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statements .
+    (2) statements -> statements . empty_statement
+    (3) statements -> statements . declaration_statement
+    (4) statements -> statements . assignment_statement
+    (8) statements -> statements . error ;
+    (43) empty_statement -> . epsilon ;
+    (33) declaration_statement -> . declaration_type declaration_list ;
+    (34) declaration_statement -> . declaration_type error ;
+    (10) assignment_statement -> . variable_usage = arithmetic_expression ;
+    (11) assignment_statement -> . array_usage = arithmetic_expression ;
+    (12) assignment_statement -> . error = arithmetic_expression ;
+    (13) assignment_statement -> . variable_usage = error ;
+    (14) assignment_statement -> . array_usage = error ;
+    (15) assignment_statement -> . error = error ;
+    (44) epsilon -> .
+    (35) declaration_type -> . FLOAT_TYPE
+    (36) declaration_type -> . DOUBLE_TYPE
+    (37) declaration_type -> . SHORT_TYPE
+    (38) declaration_type -> . INT_TYPE
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+
+    $end            reduce using rule 1 (program -> statements .)
+    error           shift and go to state 19
+    ;               reduce using rule 44 (epsilon -> .)
+    FLOAT_TYPE      shift and go to state 11
+    DOUBLE_TYPE     shift and go to state 12
+    SHORT_TYPE      shift and go to state 13
+    INT_TYPE        shift and go to state 14
+    IDENTIFIER_TOKEN shift and go to state 15
+
+    empty_statement                shift and go to state 16
+    declaration_statement          shift and go to state 17
+    assignment_statement           shift and go to state 18
+    epsilon                        shift and go to state 7
+    declaration_type               shift and go to state 8
+    variable_usage                 shift and go to state 9
+    array_usage                    shift and go to state 10
+
+state 3
+
+    (5) statements -> empty_statement .
+
+    error           reduce using rule 5 (statements -> empty_statement .)
+    FLOAT_TYPE      reduce using rule 5 (statements -> empty_statement .)
+    DOUBLE_TYPE     reduce using rule 5 (statements -> empty_statement .)
+    SHORT_TYPE      reduce using rule 5 (statements -> empty_statement .)
+    INT_TYPE        reduce using rule 5 (statements -> empty_statement .)
+    IDENTIFIER_TOKEN reduce using rule 5 (statements -> empty_statement .)
+    ;               reduce using rule 5 (statements -> empty_statement .)
+    $end            reduce using rule 5 (statements -> empty_statement .)
+
+
+state 4
+
+    (6) statements -> declaration_statement .
+
+    error           reduce using rule 6 (statements -> declaration_statement .)
+    FLOAT_TYPE      reduce using rule 6 (statements -> declaration_statement .)
+    DOUBLE_TYPE     reduce using rule 6 (statements -> declaration_statement .)
+    SHORT_TYPE      reduce using rule 6 (statements -> declaration_statement .)
+    INT_TYPE        reduce using rule 6 (statements -> declaration_statement .)
+    IDENTIFIER_TOKEN reduce using rule 6 (statements -> declaration_statement .)
+    ;               reduce using rule 6 (statements -> declaration_statement .)
+    $end            reduce using rule 6 (statements -> declaration_statement .)
+
+
+state 5
+
+    (7) statements -> assignment_statement .
+
+    error           reduce using rule 7 (statements -> assignment_statement .)
+    FLOAT_TYPE      reduce using rule 7 (statements -> assignment_statement .)
+    DOUBLE_TYPE     reduce using rule 7 (statements -> assignment_statement .)
+    SHORT_TYPE      reduce using rule 7 (statements -> assignment_statement .)
+    INT_TYPE        reduce using rule 7 (statements -> assignment_statement .)
+    IDENTIFIER_TOKEN reduce using rule 7 (statements -> assignment_statement .)
+    ;               reduce using rule 7 (statements -> assignment_statement .)
+    $end            reduce using rule 7 (statements -> assignment_statement .)
+
+
+state 6
+
+    (9) statements -> error . ;
+    (12) assignment_statement -> error . = arithmetic_expression ;
+    (15) assignment_statement -> error . = error ;
+
+    ;               shift and go to state 20
+    =               shift and go to state 21
+
+
+state 7
+
+    (43) empty_statement -> epsilon . ;
+
+    ;               shift and go to state 22
+
+
+state 8
+
+    (33) declaration_statement -> declaration_type . declaration_list ;
+    (34) declaration_statement -> declaration_type . error ;
+    (39) declaration_list -> . declaration_list , IDENTIFIER_TOKEN
+    (40) declaration_list -> . declaration_list , IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ]
+    (41) declaration_list -> . IDENTIFIER_TOKEN
+    (42) declaration_list -> . IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ]
+
+    error           shift and go to state 24
+    IDENTIFIER_TOKEN shift and go to state 25
+
+    declaration_list               shift and go to state 23
+
+state 9
+
+    (10) assignment_statement -> variable_usage . = arithmetic_expression ;
+    (13) assignment_statement -> variable_usage . = error ;
+
+    =               shift and go to state 26
+
+
+state 10
+
+    (11) assignment_statement -> array_usage . = arithmetic_expression ;
+    (14) assignment_statement -> array_usage . = error ;
+
+    =               shift and go to state 27
+
+
+state 11
+
+    (35) declaration_type -> FLOAT_TYPE .
+
+    error           reduce using rule 35 (declaration_type -> FLOAT_TYPE .)
+    IDENTIFIER_TOKEN reduce using rule 35 (declaration_type -> FLOAT_TYPE .)
+
+
+state 12
+
+    (36) declaration_type -> DOUBLE_TYPE .
+
+    error           reduce using rule 36 (declaration_type -> DOUBLE_TYPE .)
+    IDENTIFIER_TOKEN reduce using rule 36 (declaration_type -> DOUBLE_TYPE .)
+
+
+state 13
+
+    (37) declaration_type -> SHORT_TYPE .
+
+    error           reduce using rule 37 (declaration_type -> SHORT_TYPE .)
+    IDENTIFIER_TOKEN reduce using rule 37 (declaration_type -> SHORT_TYPE .)
+
+
+state 14
+
+    (38) declaration_type -> INT_TYPE .
+
+    error           reduce using rule 38 (declaration_type -> INT_TYPE .)
+    IDENTIFIER_TOKEN reduce using rule 38 (declaration_type -> INT_TYPE .)
+
+
+state 15
+
+    (29) variable_usage -> IDENTIFIER_TOKEN .
+    (30) array_usage -> IDENTIFIER_TOKEN . [ arithmetic_expression ]
+
+    =               reduce using rule 29 (variable_usage -> IDENTIFIER_TOKEN .)
+    [               shift and go to state 28
+
+
+state 16
+
+    (2) statements -> statements empty_statement .
+
+    error           reduce using rule 2 (statements -> statements empty_statement .)
+    FLOAT_TYPE      reduce using rule 2 (statements -> statements empty_statement .)
+    DOUBLE_TYPE     reduce using rule 2 (statements -> statements empty_statement .)
+    SHORT_TYPE      reduce using rule 2 (statements -> statements empty_statement .)
+    INT_TYPE        reduce using rule 2 (statements -> statements empty_statement .)
+    IDENTIFIER_TOKEN reduce using rule 2 (statements -> statements empty_statement .)
+    ;               reduce using rule 2 (statements -> statements empty_statement .)
+    $end            reduce using rule 2 (statements -> statements empty_statement .)
+
+
+state 17
+
+    (3) statements -> statements declaration_statement .
+
+    error           reduce using rule 3 (statements -> statements declaration_statement .)
+    FLOAT_TYPE      reduce using rule 3 (statements -> statements declaration_statement .)
+    DOUBLE_TYPE     reduce using rule 3 (statements -> statements declaration_statement .)
+    SHORT_TYPE      reduce using rule 3 (statements -> statements declaration_statement .)
+    INT_TYPE        reduce using rule 3 (statements -> statements declaration_statement .)
+    IDENTIFIER_TOKEN reduce using rule 3 (statements -> statements declaration_statement .)
+    ;               reduce using rule 3 (statements -> statements declaration_statement .)
+    $end            reduce using rule 3 (statements -> statements declaration_statement .)
+
+
+state 18
+
+    (4) statements -> statements assignment_statement .
+
+    error           reduce using rule 4 (statements -> statements assignment_statement .)
+    FLOAT_TYPE      reduce using rule 4 (statements -> statements assignment_statement .)
+    DOUBLE_TYPE     reduce using rule 4 (statements -> statements assignment_statement .)
+    SHORT_TYPE      reduce using rule 4 (statements -> statements assignment_statement .)
+    INT_TYPE        reduce using rule 4 (statements -> statements assignment_statement .)
+    IDENTIFIER_TOKEN reduce using rule 4 (statements -> statements assignment_statement .)
+    ;               reduce using rule 4 (statements -> statements assignment_statement .)
+    $end            reduce using rule 4 (statements -> statements assignment_statement .)
+
+
+state 19
+
+    (8) statements -> statements error . ;
+    (12) assignment_statement -> error . = arithmetic_expression ;
+    (15) assignment_statement -> error . = error ;
+
+    ;               shift and go to state 29
+    =               shift and go to state 21
+
+
+state 20
+
+    (9) statements -> error ; .
+
+    error           reduce using rule 9 (statements -> error ; .)
+    FLOAT_TYPE      reduce using rule 9 (statements -> error ; .)
+    DOUBLE_TYPE     reduce using rule 9 (statements -> error ; .)
+    SHORT_TYPE      reduce using rule 9 (statements -> error ; .)
+    INT_TYPE        reduce using rule 9 (statements -> error ; .)
+    IDENTIFIER_TOKEN reduce using rule 9 (statements -> error ; .)
+    ;               reduce using rule 9 (statements -> error ; .)
+    $end            reduce using rule 9 (statements -> error ; .)
+
+
+state 21
+
+    (12) assignment_statement -> error = . arithmetic_expression ;
+    (15) assignment_statement -> error = . error ;
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    error           shift and go to state 30
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    arithmetic_expression          shift and go to state 31
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    variable_usage                 shift and go to state 37
+    array_usage                    shift and go to state 38
+    function_name                  shift and go to state 41
+
+state 22
+
+    (43) empty_statement -> epsilon ; .
+
+    error           reduce using rule 43 (empty_statement -> epsilon ; .)
+    FLOAT_TYPE      reduce using rule 43 (empty_statement -> epsilon ; .)
+    DOUBLE_TYPE     reduce using rule 43 (empty_statement -> epsilon ; .)
+    SHORT_TYPE      reduce using rule 43 (empty_statement -> epsilon ; .)
+    INT_TYPE        reduce using rule 43 (empty_statement -> epsilon ; .)
+    IDENTIFIER_TOKEN reduce using rule 43 (empty_statement -> epsilon ; .)
+    ;               reduce using rule 43 (empty_statement -> epsilon ; .)
+    $end            reduce using rule 43 (empty_statement -> epsilon ; .)
+
+
+state 23
+
+    (33) declaration_statement -> declaration_type declaration_list . ;
+    (39) declaration_list -> declaration_list . , IDENTIFIER_TOKEN
+    (40) declaration_list -> declaration_list . , IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ]
+
+    ;               shift and go to state 43
+    ,               shift and go to state 44
+
+
+state 24
+
+    (34) declaration_statement -> declaration_type error . ;
+
+    ;               shift and go to state 45
+
+
+state 25
+
+    (41) declaration_list -> IDENTIFIER_TOKEN .
+    (42) declaration_list -> IDENTIFIER_TOKEN . [ INTEGRAL_CONSTANT ]
+
+    ;               reduce using rule 41 (declaration_list -> IDENTIFIER_TOKEN .)
+    ,               reduce using rule 41 (declaration_list -> IDENTIFIER_TOKEN .)
+    [               shift and go to state 46
+
+
+state 26
+
+    (10) assignment_statement -> variable_usage = . arithmetic_expression ;
+    (13) assignment_statement -> variable_usage = . error ;
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    error           shift and go to state 48
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    variable_usage                 shift and go to state 37
+    arithmetic_expression          shift and go to state 47
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    array_usage                    shift and go to state 38
+    function_name                  shift and go to state 41
+
+state 27
+
+    (11) assignment_statement -> array_usage = . arithmetic_expression ;
+    (14) assignment_statement -> array_usage = . error ;
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    error           shift and go to state 50
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    array_usage                    shift and go to state 38
+    arithmetic_expression          shift and go to state 49
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    variable_usage                 shift and go to state 37
+    function_name                  shift and go to state 41
+
+state 28
+
+    (30) array_usage -> IDENTIFIER_TOKEN [ . arithmetic_expression ]
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    arithmetic_expression          shift and go to state 51
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    variable_usage                 shift and go to state 37
+    array_usage                    shift and go to state 38
+    function_name                  shift and go to state 41
+
+state 29
+
+    (8) statements -> statements error ; .
+
+    error           reduce using rule 8 (statements -> statements error ; .)
+    FLOAT_TYPE      reduce using rule 8 (statements -> statements error ; .)
+    DOUBLE_TYPE     reduce using rule 8 (statements -> statements error ; .)
+    SHORT_TYPE      reduce using rule 8 (statements -> statements error ; .)
+    INT_TYPE        reduce using rule 8 (statements -> statements error ; .)
+    IDENTIFIER_TOKEN reduce using rule 8 (statements -> statements error ; .)
+    ;               reduce using rule 8 (statements -> statements error ; .)
+    $end            reduce using rule 8 (statements -> statements error ; .)
+
+
+state 30
+
+    (15) assignment_statement -> error = error . ;
+
+    ;               shift and go to state 52
+
+
+state 31
+
+    (12) assignment_statement -> error = arithmetic_expression . ;
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    ;               shift and go to state 53
+    +               shift and go to state 54
+    -               shift and go to state 55
+    *               shift and go to state 56
+    /               shift and go to state 57
+
+
+state 32
+
+    (16) arithmetic_expression -> ( . arithmetic_expression )
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    arithmetic_expression          shift and go to state 58
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    variable_usage                 shift and go to state 37
+    array_usage                    shift and go to state 38
+    function_name                  shift and go to state 41
+
+state 33
+
+    (17) arithmetic_expression -> - . arithmetic_expression
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    arithmetic_expression          shift and go to state 59
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    variable_usage                 shift and go to state 37
+    array_usage                    shift and go to state 38
+    function_name                  shift and go to state 41
+
+state 34
+
+    (18) arithmetic_expression -> + . arithmetic_expression
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    arithmetic_expression          shift and go to state 60
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    variable_usage                 shift and go to state 37
+    array_usage                    shift and go to state 38
+    function_name                  shift and go to state 41
+
+state 35
+
+    (23) arithmetic_expression -> numeric_constant .
+
+    ;               reduce using rule 23 (arithmetic_expression -> numeric_constant .)
+    +               reduce using rule 23 (arithmetic_expression -> numeric_constant .)
+    -               reduce using rule 23 (arithmetic_expression -> numeric_constant .)
+    *               reduce using rule 23 (arithmetic_expression -> numeric_constant .)
+    /               reduce using rule 23 (arithmetic_expression -> numeric_constant .)
+    ]               reduce using rule 23 (arithmetic_expression -> numeric_constant .)
+    )               reduce using rule 23 (arithmetic_expression -> numeric_constant .)
+
+
+state 36
+
+    (24) arithmetic_expression -> function_call .
+
+    ;               reduce using rule 24 (arithmetic_expression -> function_call .)
+    +               reduce using rule 24 (arithmetic_expression -> function_call .)
+    -               reduce using rule 24 (arithmetic_expression -> function_call .)
+    *               reduce using rule 24 (arithmetic_expression -> function_call .)
+    /               reduce using rule 24 (arithmetic_expression -> function_call .)
+    ]               reduce using rule 24 (arithmetic_expression -> function_call .)
+    )               reduce using rule 24 (arithmetic_expression -> function_call .)
+
+
+state 37
+
+    (25) arithmetic_expression -> variable_usage .
+
+    ;               reduce using rule 25 (arithmetic_expression -> variable_usage .)
+    +               reduce using rule 25 (arithmetic_expression -> variable_usage .)
+    -               reduce using rule 25 (arithmetic_expression -> variable_usage .)
+    *               reduce using rule 25 (arithmetic_expression -> variable_usage .)
+    /               reduce using rule 25 (arithmetic_expression -> variable_usage .)
+    ]               reduce using rule 25 (arithmetic_expression -> variable_usage .)
+    )               reduce using rule 25 (arithmetic_expression -> variable_usage .)
+
+
+state 38
+
+    (26) arithmetic_expression -> array_usage .
+
+    ;               reduce using rule 26 (arithmetic_expression -> array_usage .)
+    +               reduce using rule 26 (arithmetic_expression -> array_usage .)
+    -               reduce using rule 26 (arithmetic_expression -> array_usage .)
+    *               reduce using rule 26 (arithmetic_expression -> array_usage .)
+    /               reduce using rule 26 (arithmetic_expression -> array_usage .)
+    ]               reduce using rule 26 (arithmetic_expression -> array_usage .)
+    )               reduce using rule 26 (arithmetic_expression -> array_usage .)
+
+
+state 39
+
+    (31) numeric_constant -> INTEGRAL_CONSTANT .
+
+    ;               reduce using rule 31 (numeric_constant -> INTEGRAL_CONSTANT .)
+    +               reduce using rule 31 (numeric_constant -> INTEGRAL_CONSTANT .)
+    -               reduce using rule 31 (numeric_constant -> INTEGRAL_CONSTANT .)
+    *               reduce using rule 31 (numeric_constant -> INTEGRAL_CONSTANT .)
+    /               reduce using rule 31 (numeric_constant -> INTEGRAL_CONSTANT .)
+    ]               reduce using rule 31 (numeric_constant -> INTEGRAL_CONSTANT .)
+    )               reduce using rule 31 (numeric_constant -> INTEGRAL_CONSTANT .)
+
+
+state 40
+
+    (32) numeric_constant -> DECIMAL_CONSTANT .
+
+    ;               reduce using rule 32 (numeric_constant -> DECIMAL_CONSTANT .)
+    +               reduce using rule 32 (numeric_constant -> DECIMAL_CONSTANT .)
+    -               reduce using rule 32 (numeric_constant -> DECIMAL_CONSTANT .)
+    *               reduce using rule 32 (numeric_constant -> DECIMAL_CONSTANT .)
+    /               reduce using rule 32 (numeric_constant -> DECIMAL_CONSTANT .)
+    ]               reduce using rule 32 (numeric_constant -> DECIMAL_CONSTANT .)
+    )               reduce using rule 32 (numeric_constant -> DECIMAL_CONSTANT .)
+
+
+state 41
+
+    (27) function_call -> function_name . ( arithmetic_expression )
+
+    (               shift and go to state 61
+
+
+state 42
+
+    (29) variable_usage -> IDENTIFIER_TOKEN .
+    (30) array_usage -> IDENTIFIER_TOKEN . [ arithmetic_expression ]
+    (28) function_name -> IDENTIFIER_TOKEN .
+
+    ;               reduce using rule 29 (variable_usage -> IDENTIFIER_TOKEN .)
+    +               reduce using rule 29 (variable_usage -> IDENTIFIER_TOKEN .)
+    -               reduce using rule 29 (variable_usage -> IDENTIFIER_TOKEN .)
+    *               reduce using rule 29 (variable_usage -> IDENTIFIER_TOKEN .)
+    /               reduce using rule 29 (variable_usage -> IDENTIFIER_TOKEN .)
+    ]               reduce using rule 29 (variable_usage -> IDENTIFIER_TOKEN .)
+    )               reduce using rule 29 (variable_usage -> IDENTIFIER_TOKEN .)
+    [               shift and go to state 28
+    (               reduce using rule 28 (function_name -> IDENTIFIER_TOKEN .)
+
+
+state 43
+
+    (33) declaration_statement -> declaration_type declaration_list ; .
+
+    error           reduce using rule 33 (declaration_statement -> declaration_type declaration_list ; .)
+    FLOAT_TYPE      reduce using rule 33 (declaration_statement -> declaration_type declaration_list ; .)
+    DOUBLE_TYPE     reduce using rule 33 (declaration_statement -> declaration_type declaration_list ; .)
+    SHORT_TYPE      reduce using rule 33 (declaration_statement -> declaration_type declaration_list ; .)
+    INT_TYPE        reduce using rule 33 (declaration_statement -> declaration_type declaration_list ; .)
+    IDENTIFIER_TOKEN reduce using rule 33 (declaration_statement -> declaration_type declaration_list ; .)
+    ;               reduce using rule 33 (declaration_statement -> declaration_type declaration_list ; .)
+    $end            reduce using rule 33 (declaration_statement -> declaration_type declaration_list ; .)
+
+
+state 44
+
+    (39) declaration_list -> declaration_list , . IDENTIFIER_TOKEN
+    (40) declaration_list -> declaration_list , . IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ]
+
+    IDENTIFIER_TOKEN shift and go to state 62
+
+
+state 45
+
+    (34) declaration_statement -> declaration_type error ; .
+
+    error           reduce using rule 34 (declaration_statement -> declaration_type error ; .)
+    FLOAT_TYPE      reduce using rule 34 (declaration_statement -> declaration_type error ; .)
+    DOUBLE_TYPE     reduce using rule 34 (declaration_statement -> declaration_type error ; .)
+    SHORT_TYPE      reduce using rule 34 (declaration_statement -> declaration_type error ; .)
+    INT_TYPE        reduce using rule 34 (declaration_statement -> declaration_type error ; .)
+    IDENTIFIER_TOKEN reduce using rule 34 (declaration_statement -> declaration_type error ; .)
+    ;               reduce using rule 34 (declaration_statement -> declaration_type error ; .)
+    $end            reduce using rule 34 (declaration_statement -> declaration_type error ; .)
+
+
+state 46
+
+    (42) declaration_list -> IDENTIFIER_TOKEN [ . INTEGRAL_CONSTANT ]
+
+    INTEGRAL_CONSTANT shift and go to state 63
+
+
+state 47
+
+    (10) assignment_statement -> variable_usage = arithmetic_expression . ;
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    ;               shift and go to state 64
+    +               shift and go to state 54
+    -               shift and go to state 55
+    *               shift and go to state 56
+    /               shift and go to state 57
+
+
+state 48
+
+    (13) assignment_statement -> variable_usage = error . ;
+
+    ;               shift and go to state 65
+
+
+state 49
+
+    (11) assignment_statement -> array_usage = arithmetic_expression . ;
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    ;               shift and go to state 66
+    +               shift and go to state 54
+    -               shift and go to state 55
+    *               shift and go to state 56
+    /               shift and go to state 57
+
+
+state 50
+
+    (14) assignment_statement -> array_usage = error . ;
+
+    ;               shift and go to state 67
+
+
+state 51
+
+    (30) array_usage -> IDENTIFIER_TOKEN [ arithmetic_expression . ]
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    ]               shift and go to state 68
+    +               shift and go to state 54
+    -               shift and go to state 55
+    *               shift and go to state 56
+    /               shift and go to state 57
+
+
+state 52
+
+    (15) assignment_statement -> error = error ; .
+
+    error           reduce using rule 15 (assignment_statement -> error = error ; .)
+    FLOAT_TYPE      reduce using rule 15 (assignment_statement -> error = error ; .)
+    DOUBLE_TYPE     reduce using rule 15 (assignment_statement -> error = error ; .)
+    SHORT_TYPE      reduce using rule 15 (assignment_statement -> error = error ; .)
+    INT_TYPE        reduce using rule 15 (assignment_statement -> error = error ; .)
+    IDENTIFIER_TOKEN reduce using rule 15 (assignment_statement -> error = error ; .)
+    ;               reduce using rule 15 (assignment_statement -> error = error ; .)
+    $end            reduce using rule 15 (assignment_statement -> error = error ; .)
+
+
+state 53
+
+    (12) assignment_statement -> error = arithmetic_expression ; .
+
+    error           reduce using rule 12 (assignment_statement -> error = arithmetic_expression ; .)
+    FLOAT_TYPE      reduce using rule 12 (assignment_statement -> error = arithmetic_expression ; .)
+    DOUBLE_TYPE     reduce using rule 12 (assignment_statement -> error = arithmetic_expression ; .)
+    SHORT_TYPE      reduce using rule 12 (assignment_statement -> error = arithmetic_expression ; .)
+    INT_TYPE        reduce using rule 12 (assignment_statement -> error = arithmetic_expression ; .)
+    IDENTIFIER_TOKEN reduce using rule 12 (assignment_statement -> error = arithmetic_expression ; .)
+    ;               reduce using rule 12 (assignment_statement -> error = arithmetic_expression ; .)
+    $end            reduce using rule 12 (assignment_statement -> error = arithmetic_expression ; .)
+
+
+state 54
+
+    (19) arithmetic_expression -> arithmetic_expression + . arithmetic_expression
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    arithmetic_expression          shift and go to state 69
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    variable_usage                 shift and go to state 37
+    array_usage                    shift and go to state 38
+    function_name                  shift and go to state 41
+
+state 55
+
+    (20) arithmetic_expression -> arithmetic_expression - . arithmetic_expression
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    arithmetic_expression          shift and go to state 70
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    variable_usage                 shift and go to state 37
+    array_usage                    shift and go to state 38
+    function_name                  shift and go to state 41
+
+state 56
+
+    (21) arithmetic_expression -> arithmetic_expression * . arithmetic_expression
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    arithmetic_expression          shift and go to state 71
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    variable_usage                 shift and go to state 37
+    array_usage                    shift and go to state 38
+    function_name                  shift and go to state 41
+
+state 57
+
+    (22) arithmetic_expression -> arithmetic_expression / . arithmetic_expression
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    arithmetic_expression          shift and go to state 72
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    variable_usage                 shift and go to state 37
+    array_usage                    shift and go to state 38
+    function_name                  shift and go to state 41
+
+state 58
+
+    (16) arithmetic_expression -> ( arithmetic_expression . )
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    )               shift and go to state 73
+    +               shift and go to state 54
+    -               shift and go to state 55
+    *               shift and go to state 56
+    /               shift and go to state 57
+
+
+state 59
+
+    (17) arithmetic_expression -> - arithmetic_expression .
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    ;               reduce using rule 17 (arithmetic_expression -> - arithmetic_expression .)
+    +               reduce using rule 17 (arithmetic_expression -> - arithmetic_expression .)
+    -               reduce using rule 17 (arithmetic_expression -> - arithmetic_expression .)
+    *               reduce using rule 17 (arithmetic_expression -> - arithmetic_expression .)
+    /               reduce using rule 17 (arithmetic_expression -> - arithmetic_expression .)
+    ]               reduce using rule 17 (arithmetic_expression -> - arithmetic_expression .)
+    )               reduce using rule 17 (arithmetic_expression -> - arithmetic_expression .)
+
+  ! +               [ shift and go to state 54 ]
+  ! -               [ shift and go to state 55 ]
+  ! *               [ shift and go to state 56 ]
+  ! /               [ shift and go to state 57 ]
+
+
+state 60
+
+    (18) arithmetic_expression -> + arithmetic_expression .
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    ;               reduce using rule 18 (arithmetic_expression -> + arithmetic_expression .)
+    +               reduce using rule 18 (arithmetic_expression -> + arithmetic_expression .)
+    -               reduce using rule 18 (arithmetic_expression -> + arithmetic_expression .)
+    *               reduce using rule 18 (arithmetic_expression -> + arithmetic_expression .)
+    /               reduce using rule 18 (arithmetic_expression -> + arithmetic_expression .)
+    ]               reduce using rule 18 (arithmetic_expression -> + arithmetic_expression .)
+    )               reduce using rule 18 (arithmetic_expression -> + arithmetic_expression .)
+
+  ! +               [ shift and go to state 54 ]
+  ! -               [ shift and go to state 55 ]
+  ! *               [ shift and go to state 56 ]
+  ! /               [ shift and go to state 57 ]
+
+
+state 61
+
+    (27) function_call -> function_name ( . arithmetic_expression )
+    (16) arithmetic_expression -> . ( arithmetic_expression )
+    (17) arithmetic_expression -> . - arithmetic_expression
+    (18) arithmetic_expression -> . + arithmetic_expression
+    (19) arithmetic_expression -> . arithmetic_expression + arithmetic_expression
+    (20) arithmetic_expression -> . arithmetic_expression - arithmetic_expression
+    (21) arithmetic_expression -> . arithmetic_expression * arithmetic_expression
+    (22) arithmetic_expression -> . arithmetic_expression / arithmetic_expression
+    (23) arithmetic_expression -> . numeric_constant
+    (24) arithmetic_expression -> . function_call
+    (25) arithmetic_expression -> . variable_usage
+    (26) arithmetic_expression -> . array_usage
+    (31) numeric_constant -> . INTEGRAL_CONSTANT
+    (32) numeric_constant -> . DECIMAL_CONSTANT
+    (27) function_call -> . function_name ( arithmetic_expression )
+    (29) variable_usage -> . IDENTIFIER_TOKEN
+    (30) array_usage -> . IDENTIFIER_TOKEN [ arithmetic_expression ]
+    (28) function_name -> . IDENTIFIER_TOKEN
+
+    (               shift and go to state 32
+    -               shift and go to state 33
+    +               shift and go to state 34
+    INTEGRAL_CONSTANT shift and go to state 39
+    DECIMAL_CONSTANT shift and go to state 40
+    IDENTIFIER_TOKEN shift and go to state 42
+
+    function_name                  shift and go to state 41
+    arithmetic_expression          shift and go to state 74
+    numeric_constant               shift and go to state 35
+    function_call                  shift and go to state 36
+    variable_usage                 shift and go to state 37
+    array_usage                    shift and go to state 38
+
+state 62
+
+    (39) declaration_list -> declaration_list , IDENTIFIER_TOKEN .
+    (40) declaration_list -> declaration_list , IDENTIFIER_TOKEN . [ INTEGRAL_CONSTANT ]
+
+    ;               reduce using rule 39 (declaration_list -> declaration_list , IDENTIFIER_TOKEN .)
+    ,               reduce using rule 39 (declaration_list -> declaration_list , IDENTIFIER_TOKEN .)
+    [               shift and go to state 75
+
+
+state 63
+
+    (42) declaration_list -> IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT . ]
+
+    ]               shift and go to state 76
+
+
+state 64
+
+    (10) assignment_statement -> variable_usage = arithmetic_expression ; .
+
+    error           reduce using rule 10 (assignment_statement -> variable_usage = arithmetic_expression ; .)
+    FLOAT_TYPE      reduce using rule 10 (assignment_statement -> variable_usage = arithmetic_expression ; .)
+    DOUBLE_TYPE     reduce using rule 10 (assignment_statement -> variable_usage = arithmetic_expression ; .)
+    SHORT_TYPE      reduce using rule 10 (assignment_statement -> variable_usage = arithmetic_expression ; .)
+    INT_TYPE        reduce using rule 10 (assignment_statement -> variable_usage = arithmetic_expression ; .)
+    IDENTIFIER_TOKEN reduce using rule 10 (assignment_statement -> variable_usage = arithmetic_expression ; .)
+    ;               reduce using rule 10 (assignment_statement -> variable_usage = arithmetic_expression ; .)
+    $end            reduce using rule 10 (assignment_statement -> variable_usage = arithmetic_expression ; .)
+
+
+state 65
+
+    (13) assignment_statement -> variable_usage = error ; .
+
+    error           reduce using rule 13 (assignment_statement -> variable_usage = error ; .)
+    FLOAT_TYPE      reduce using rule 13 (assignment_statement -> variable_usage = error ; .)
+    DOUBLE_TYPE     reduce using rule 13 (assignment_statement -> variable_usage = error ; .)
+    SHORT_TYPE      reduce using rule 13 (assignment_statement -> variable_usage = error ; .)
+    INT_TYPE        reduce using rule 13 (assignment_statement -> variable_usage = error ; .)
+    IDENTIFIER_TOKEN reduce using rule 13 (assignment_statement -> variable_usage = error ; .)
+    ;               reduce using rule 13 (assignment_statement -> variable_usage = error ; .)
+    $end            reduce using rule 13 (assignment_statement -> variable_usage = error ; .)
+
+
+state 66
+
+    (11) assignment_statement -> array_usage = arithmetic_expression ; .
+
+    error           reduce using rule 11 (assignment_statement -> array_usage = arithmetic_expression ; .)
+    FLOAT_TYPE      reduce using rule 11 (assignment_statement -> array_usage = arithmetic_expression ; .)
+    DOUBLE_TYPE     reduce using rule 11 (assignment_statement -> array_usage = arithmetic_expression ; .)
+    SHORT_TYPE      reduce using rule 11 (assignment_statement -> array_usage = arithmetic_expression ; .)
+    INT_TYPE        reduce using rule 11 (assignment_statement -> array_usage = arithmetic_expression ; .)
+    IDENTIFIER_TOKEN reduce using rule 11 (assignment_statement -> array_usage = arithmetic_expression ; .)
+    ;               reduce using rule 11 (assignment_statement -> array_usage = arithmetic_expression ; .)
+    $end            reduce using rule 11 (assignment_statement -> array_usage = arithmetic_expression ; .)
+
+
+state 67
+
+    (14) assignment_statement -> array_usage = error ; .
+
+    error           reduce using rule 14 (assignment_statement -> array_usage = error ; .)
+    FLOAT_TYPE      reduce using rule 14 (assignment_statement -> array_usage = error ; .)
+    DOUBLE_TYPE     reduce using rule 14 (assignment_statement -> array_usage = error ; .)
+    SHORT_TYPE      reduce using rule 14 (assignment_statement -> array_usage = error ; .)
+    INT_TYPE        reduce using rule 14 (assignment_statement -> array_usage = error ; .)
+    IDENTIFIER_TOKEN reduce using rule 14 (assignment_statement -> array_usage = error ; .)
+    ;               reduce using rule 14 (assignment_statement -> array_usage = error ; .)
+    $end            reduce using rule 14 (assignment_statement -> array_usage = error ; .)
+
+
+state 68
+
+    (30) array_usage -> IDENTIFIER_TOKEN [ arithmetic_expression ] .
+
+    =               reduce using rule 30 (array_usage -> IDENTIFIER_TOKEN [ arithmetic_expression ] .)
+    ;               reduce using rule 30 (array_usage -> IDENTIFIER_TOKEN [ arithmetic_expression ] .)
+    +               reduce using rule 30 (array_usage -> IDENTIFIER_TOKEN [ arithmetic_expression ] .)
+    -               reduce using rule 30 (array_usage -> IDENTIFIER_TOKEN [ arithmetic_expression ] .)
+    *               reduce using rule 30 (array_usage -> IDENTIFIER_TOKEN [ arithmetic_expression ] .)
+    /               reduce using rule 30 (array_usage -> IDENTIFIER_TOKEN [ arithmetic_expression ] .)
+    ]               reduce using rule 30 (array_usage -> IDENTIFIER_TOKEN [ arithmetic_expression ] .)
+    )               reduce using rule 30 (array_usage -> IDENTIFIER_TOKEN [ arithmetic_expression ] .)
+
+
+state 69
+
+    (19) arithmetic_expression -> arithmetic_expression + arithmetic_expression .
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    ;               reduce using rule 19 (arithmetic_expression -> arithmetic_expression + arithmetic_expression .)
+    +               reduce using rule 19 (arithmetic_expression -> arithmetic_expression + arithmetic_expression .)
+    -               reduce using rule 19 (arithmetic_expression -> arithmetic_expression + arithmetic_expression .)
+    *               reduce using rule 19 (arithmetic_expression -> arithmetic_expression + arithmetic_expression .)
+    /               reduce using rule 19 (arithmetic_expression -> arithmetic_expression + arithmetic_expression .)
+    ]               reduce using rule 19 (arithmetic_expression -> arithmetic_expression + arithmetic_expression .)
+    )               reduce using rule 19 (arithmetic_expression -> arithmetic_expression + arithmetic_expression .)
+
+  ! +               [ shift and go to state 54 ]
+  ! -               [ shift and go to state 55 ]
+  ! *               [ shift and go to state 56 ]
+  ! /               [ shift and go to state 57 ]
+
+
+state 70
+
+    (20) arithmetic_expression -> arithmetic_expression - arithmetic_expression .
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    ;               reduce using rule 20 (arithmetic_expression -> arithmetic_expression - arithmetic_expression .)
+    +               reduce using rule 20 (arithmetic_expression -> arithmetic_expression - arithmetic_expression .)
+    -               reduce using rule 20 (arithmetic_expression -> arithmetic_expression - arithmetic_expression .)
+    *               reduce using rule 20 (arithmetic_expression -> arithmetic_expression - arithmetic_expression .)
+    /               reduce using rule 20 (arithmetic_expression -> arithmetic_expression - arithmetic_expression .)
+    ]               reduce using rule 20 (arithmetic_expression -> arithmetic_expression - arithmetic_expression .)
+    )               reduce using rule 20 (arithmetic_expression -> arithmetic_expression - arithmetic_expression .)
+
+  ! +               [ shift and go to state 54 ]
+  ! -               [ shift and go to state 55 ]
+  ! *               [ shift and go to state 56 ]
+  ! /               [ shift and go to state 57 ]
+
+
+state 71
+
+    (21) arithmetic_expression -> arithmetic_expression * arithmetic_expression .
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    ;               reduce using rule 21 (arithmetic_expression -> arithmetic_expression * arithmetic_expression .)
+    +               reduce using rule 21 (arithmetic_expression -> arithmetic_expression * arithmetic_expression .)
+    -               reduce using rule 21 (arithmetic_expression -> arithmetic_expression * arithmetic_expression .)
+    *               reduce using rule 21 (arithmetic_expression -> arithmetic_expression * arithmetic_expression .)
+    /               reduce using rule 21 (arithmetic_expression -> arithmetic_expression * arithmetic_expression .)
+    ]               reduce using rule 21 (arithmetic_expression -> arithmetic_expression * arithmetic_expression .)
+    )               reduce using rule 21 (arithmetic_expression -> arithmetic_expression * arithmetic_expression .)
+
+  ! +               [ shift and go to state 54 ]
+  ! -               [ shift and go to state 55 ]
+  ! *               [ shift and go to state 56 ]
+  ! /               [ shift and go to state 57 ]
+
+
+state 72
+
+    (22) arithmetic_expression -> arithmetic_expression / arithmetic_expression .
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    ;               reduce using rule 22 (arithmetic_expression -> arithmetic_expression / arithmetic_expression .)
+    +               reduce using rule 22 (arithmetic_expression -> arithmetic_expression / arithmetic_expression .)
+    -               reduce using rule 22 (arithmetic_expression -> arithmetic_expression / arithmetic_expression .)
+    *               reduce using rule 22 (arithmetic_expression -> arithmetic_expression / arithmetic_expression .)
+    /               reduce using rule 22 (arithmetic_expression -> arithmetic_expression / arithmetic_expression .)
+    ]               reduce using rule 22 (arithmetic_expression -> arithmetic_expression / arithmetic_expression .)
+    )               reduce using rule 22 (arithmetic_expression -> arithmetic_expression / arithmetic_expression .)
+
+  ! +               [ shift and go to state 54 ]
+  ! -               [ shift and go to state 55 ]
+  ! *               [ shift and go to state 56 ]
+  ! /               [ shift and go to state 57 ]
+
+
+state 73
+
+    (16) arithmetic_expression -> ( arithmetic_expression ) .
+
+    ;               reduce using rule 16 (arithmetic_expression -> ( arithmetic_expression ) .)
+    +               reduce using rule 16 (arithmetic_expression -> ( arithmetic_expression ) .)
+    -               reduce using rule 16 (arithmetic_expression -> ( arithmetic_expression ) .)
+    *               reduce using rule 16 (arithmetic_expression -> ( arithmetic_expression ) .)
+    /               reduce using rule 16 (arithmetic_expression -> ( arithmetic_expression ) .)
+    ]               reduce using rule 16 (arithmetic_expression -> ( arithmetic_expression ) .)
+    )               reduce using rule 16 (arithmetic_expression -> ( arithmetic_expression ) .)
+
+
+state 74
+
+    (27) function_call -> function_name ( arithmetic_expression . )
+    (19) arithmetic_expression -> arithmetic_expression . + arithmetic_expression
+    (20) arithmetic_expression -> arithmetic_expression . - arithmetic_expression
+    (21) arithmetic_expression -> arithmetic_expression . * arithmetic_expression
+    (22) arithmetic_expression -> arithmetic_expression . / arithmetic_expression
+
+    )               shift and go to state 77
+    +               shift and go to state 54
+    -               shift and go to state 55
+    *               shift and go to state 56
+    /               shift and go to state 57
+
+
+state 75
+
+    (40) declaration_list -> declaration_list , IDENTIFIER_TOKEN [ . INTEGRAL_CONSTANT ]
+
+    INTEGRAL_CONSTANT shift and go to state 78
+
+
+state 76
+
+    (42) declaration_list -> IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ] .
+
+    ;               reduce using rule 42 (declaration_list -> IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ] .)
+    ,               reduce using rule 42 (declaration_list -> IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ] .)
+
+
+state 77
+
+    (27) function_call -> function_name ( arithmetic_expression ) .
+
+    ;               reduce using rule 27 (function_call -> function_name ( arithmetic_expression ) .)
+    +               reduce using rule 27 (function_call -> function_name ( arithmetic_expression ) .)
+    -               reduce using rule 27 (function_call -> function_name ( arithmetic_expression ) .)
+    *               reduce using rule 27 (function_call -> function_name ( arithmetic_expression ) .)
+    /               reduce using rule 27 (function_call -> function_name ( arithmetic_expression ) .)
+    ]               reduce using rule 27 (function_call -> function_name ( arithmetic_expression ) .)
+    )               reduce using rule 27 (function_call -> function_name ( arithmetic_expression ) .)
+
+
+state 78
+
+    (40) declaration_list -> declaration_list , IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT . ]
+
+    ]               shift and go to state 79
+
+
+state 79
+
+    (40) declaration_list -> declaration_list , IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ] .
+
+    ;               reduce using rule 40 (declaration_list -> declaration_list , IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ] .)
+    ,               reduce using rule 40 (declaration_list -> declaration_list , IDENTIFIER_TOKEN [ INTEGRAL_CONSTANT ] .)
+

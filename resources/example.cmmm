@@ -1,0 +1,1 @@
+double a; int b; a=2; b=sin(2*-a); b=2*-a;
